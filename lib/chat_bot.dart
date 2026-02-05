@@ -1,5 +1,4 @@
 import 'package:chatbot_app/modules/onboarding/screens/onboarding_screen.dart';
-import 'package:chatbot_app/modules/splash/screens/splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
