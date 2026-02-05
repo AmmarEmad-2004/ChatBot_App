@@ -52,8 +52,8 @@ double getResponsiveFontSize({
 }) {
   double scaleFactor = getScaleFactor(context: context);
   double responsiveFontSize = fontSize * scaleFactor;
-  double lowerLimit = fontSize * 0.8;
-  double upperLimit = fontSize * 1.2;
+  double lowerLimit = fontSize * 1;
+  double upperLimit = fontSize * 1.1;
 
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
 }
