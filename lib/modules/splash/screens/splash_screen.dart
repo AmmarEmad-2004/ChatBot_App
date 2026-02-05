@@ -1,19 +1,15 @@
+import 'package:chatbot_app/core/constants/app_images.dart';
+import 'package:chatbot_app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({
-    super.key,
-  });
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(
-          'Hello, I am your ChatBot!',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
+      backgroundColor: AppColors.primaryColor,
+      body: Center(child: Image.asset(AppImages.imagesSplash2)),
     );
   }
 }

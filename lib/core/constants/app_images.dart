@@ -26,6 +26,10 @@ class AppImages {
   /// assets/images/splash.svg
   static const String imagesSplash = "assets/images/splash.svg";
 
+  /// Assets for assetsImagesSplash2
+  /// assets/images/splash2.png
+  static const String imagesSplash2 = "assets/images/splash2.png";
+
   /// Assets for assetsImagesTranslate
   /// assets/images/translate.svg
   static const String imagesTranslate = "assets/images/translate.svg";
