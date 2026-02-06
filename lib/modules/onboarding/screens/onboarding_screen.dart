@@ -28,7 +28,7 @@ class OnboardingScreen extends StatelessWidget {
             ),
             SizedBox(height: 84),
             // SvgPicture.asset(AppImages.imagesOnboarding),
-            Image.asset(AppImages.imagesOnboarding2),
+            Image.asset(AppImages.onboarding2),
             Spacer(),
 
             CustomButton(),
@@ -38,4 +38,3 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 }
-
