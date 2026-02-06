@@ -7,9 +7,14 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
-        child: Column(children: [ChatScreenHeader()]),
+      body: Column(
+        children: [
+          ChatScreenHeader(),
+          SizedBox(height: 13),
+          Divider(color: Color(0xffECECEC)),
+          SizedBox(height: 19),
+          ChatScreenWelcome(),
+        ],
       ),
     );
   }

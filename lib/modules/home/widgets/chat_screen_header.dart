@@ -8,39 +8,42 @@ class ChatScreenHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(Icons.arrow_back_outlined, color: Colors.black, size: 24),
-        SizedBox(width: 13),
-        Image.asset(AppImages.blueRobot2),
-        SizedBox(width: 20),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("ChatGPT", style: TextStyles.textBold20(context)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: 6,
-                  width: 6,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    shape: BoxShape.circle,
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, right: 30, top: 30,),
+      child: Row(
+        children: [
+          Icon(Icons.arrow_back_outlined, color: Colors.black, size: 24),
+          SizedBox(width: 13),
+          Image.asset(AppImages.blueRobot2),
+          SizedBox(width: 20),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("ChatGPT", style: TextStyles.textBold20(context)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 6,
+                    width: 6,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      shape: BoxShape.circle,
+                    ),
                   ),
-                ),
-                SizedBox(width: 5),
-                Text("Online", style: TextStyles.textMedium17(context)),
-              ],
-            ),
-          ],
-        ),
-    
-        Spacer(),
-        SvgPicture.asset(AppImages.volumeHigh),
-        SizedBox(width: 19),
-        SvgPicture.asset(AppImages.export),
-      ],
+                  SizedBox(width: 5),
+                  Text("Online", style: TextStyles.textMedium17(context)),
+                ],
+              ),
+            ],
+          ),
+
+          Spacer(),
+          SvgPicture.asset(AppImages.volumeHigh),
+          SizedBox(width: 19),
+          SvgPicture.asset(AppImages.export),
+        ],
+      ),
     );
   }
 }
