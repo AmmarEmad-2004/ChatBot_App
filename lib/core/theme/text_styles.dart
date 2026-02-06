@@ -26,6 +26,12 @@ abstract class TextStyles {
     color: AppColors.primaryColor,
     fontFamily: 'Nunito',
   );
+  static TextStyle textBold14(BuildContext context) => TextStyle(
+    fontSize: getResponsiveFontSize(context: context, fontSize: 14),
+    fontWeight: FontWeight.bold,
+    color: Color(0xff3F3F3F),
+    fontFamily: 'Nunito',
+  );
   static TextStyle textMedium15(BuildContext context) => TextStyle(
     fontSize: getResponsiveFontSize(context: context, fontSize: 15),
     fontWeight: FontWeight.w500,
