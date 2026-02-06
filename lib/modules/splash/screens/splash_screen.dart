@@ -1,6 +1,8 @@
 import 'package:chatbot_app/core/helpers/splash_config.dart';
+import 'package:chatbot_app/core/routing/app_routers.dart';
 import 'package:flutter/material.dart';
 import 'package:chatbot_app/core/theme/app_colors.dart';
+import 'package:go_router/go_router.dart';
 import '../widgets/splash_logo_animation.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -33,6 +35,11 @@ class _SplashScreenState extends State<SplashScreen>
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutBack));
 
     _controller.forward();
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        GoRouter.of(context).go(AppRouters.onboarding);
+      }
+    });
   }
 
   @override
