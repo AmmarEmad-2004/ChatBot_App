@@ -1,8 +1,7 @@
-import 'package:chatbot_app/core/constants/app_images.dart';
-import 'package:chatbot_app/core/theme/text_styles.dart';
-import 'package:chatbot_app/modules/home/widgets/custom_container.dart';
+import 'package:chatbot_app/modules/home/widgets/explain_widget.dart';
+import 'package:chatbot_app/modules/home/widgets/translate_widget.dart';
+import 'package:chatbot_app/modules/home/widgets/write_and_edit_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ChatScreenWelcome extends StatelessWidget {
   const ChatScreenWelcome({super.key});
@@ -10,16 +9,19 @@ class ChatScreenWelcome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(AppImages.explain),
-          Text("Explain", style: TextStyles.textBold14(context)),
-          SizedBox(height: 18),
-          CustomContainer(data: "Explain Quantum physics"),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 29),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ExplainWidget(),
+            SizedBox(height: 37),
+            WriteAndEditWidget(),
+            SizedBox(height: 37),
+            TranslateWidget(),
+          ],
+        ),
       ),
     );
   }
 }
-
