@@ -7,13 +7,11 @@ class ChatBot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
-        routerConfig: AppRouter.goRouter,
-      ),
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
+      routerConfig: AppRouter.goRouter,
     );
   }
 }
