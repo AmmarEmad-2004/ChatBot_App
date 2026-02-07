@@ -13,13 +13,15 @@ class AiTyping extends StatelessWidget {
         children: [
           Image.asset(AppImages.robot2),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: const Color(0xffeeeeee),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
             ),
-            child: Lottie.asset('assets/animations/loading.json', width: 60),
+            child: Lottie.asset(
+              'assets/animations/loading.json',
+              width: 30,
+              height: 25,
+            ),
           ),
         ],
       ),
