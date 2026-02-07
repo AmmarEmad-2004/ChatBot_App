@@ -11,15 +11,19 @@ class ChatScreenWelcome extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 29),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ExplainWidget(),
-            SizedBox(height: 37),
-            WriteAndEditWidget(),
-            SizedBox(height: 37),
-            TranslateWidget(),
-          ],
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 19),
+              ExplainWidget(),
+              SizedBox(height: 37),
+              WriteAndEditWidget(),
+              SizedBox(height: 37),
+              TranslateWidget(),
+            ],
+          ),
         ),
       ),
     );
