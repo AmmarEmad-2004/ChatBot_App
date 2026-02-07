@@ -32,8 +32,10 @@ class CustomTextFeild extends StatelessWidget {
             child: TextField(
               controller: controller,
               decoration: InputDecoration(
-                hintText: "Hello chatGPT, how are you today?",
-                hintStyle: TextStyles.textBold13(context),
+                hintText: "Write your message",
+                hintStyle: TextStyles.textBold13(
+                  context,
+                ).copyWith(color: Colors.grey),
                 border: InputBorder.none,
               ),
               onSubmitted: (_) => onSend(),
