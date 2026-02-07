@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        GoRouter.of(context).go(AppRouters.chatScreen);
+        GoRouter.of(context).pushReplacement(AppRouters.chatScreen);
       },
       child: Container(
         height: 56,
