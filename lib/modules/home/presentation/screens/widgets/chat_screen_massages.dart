@@ -52,7 +52,7 @@ class _ChatScreenMassagesState extends State<ChatScreenMassages> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 70),
       child: ListView.builder(
-        controller: _scrollController, // ✅ مهم
+        controller: _scrollController, 
         padding: const EdgeInsets.all(8),
         itemCount: widget.messages.length + (widget.isTyping ? 1 : 0),
         itemBuilder: (context, index) {
