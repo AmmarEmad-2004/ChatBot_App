@@ -10,7 +10,7 @@ class ChatRepoImpl implements ChatRepo {
   final GeminiSevice remote;
   final ChatLocalDs local;
 
-  final List<MassageModel> _cache = [];
+  final List<MassageModel> cache = [];
 
   ChatRepoImpl(this.remote, this.local);
 
@@ -18,10 +18,10 @@ class ChatRepoImpl implements ChatRepo {
   Future<Either<Failure, List<MassageModel>>> loadHistory() async {
     try {
       final history = await local.getHistory();
-      _cache
+      cache
         ..clear()
         ..addAll(history);
-      return Right(_cache);
+      return Right(cache);
     } catch (_) {
       return Left(CacheFailure());
     }
@@ -31,16 +31,16 @@ class ChatRepoImpl implements ChatRepo {
   Future<Either<Failure, List<MassageModel>>> sendMessage(String text) async {
     try {
       final userMsg = MassageModel(role: "user", text: text);
-      _cache.add(userMsg);
+      cache.add(userMsg);
       await local.saveMessage(userMsg);
 
-      final aiText = await remote.sendChat(_cache);
+      final aiText = await remote.sendChat(cache);
 
       final aiMsg = MassageModel(role: "model", text: aiText);
-      _cache.add(aiMsg);
+      cache.add(aiMsg);
       await local.saveMessage(aiMsg);
 
-      return Right(List.from(_cache));
+      return Right(List.from(cache));
     } on DioException {
       return Left(NetworkFailure());
     } catch (_) {
