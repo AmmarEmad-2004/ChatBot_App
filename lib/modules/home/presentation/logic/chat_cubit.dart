@@ -16,14 +16,10 @@ class ChatCubit extends Cubit<ChatState> {
     );
   }
 
-  /// إرسال رسالة + typing indicator
   Future<void> sendMessage(String text) async {
-    // if (state is !ChatSuccess) return;
-
     final currentState = state as ChatSuccess;
     final currentMessages = currentState.messages;
 
-    /// 1️⃣ Optimistic UI
     emit(ChatSuccess(
       [
         ...currentMessages,
@@ -32,13 +28,10 @@ class ChatCubit extends Cubit<ChatState> {
       isTyping: true,
     ));
 
-    /// 2️⃣ Business Logic (Firebase + Gemini)
     final result = await repo.sendMessage(text);
 
-    /// 3️⃣ النتيجة النهائية
     result.fold(
       (failure) {
-        // تشيل typing
         emit(ChatSuccess(currentMessages, isTyping: false));
         emit(ChatFailuer(failure.message));
       },
