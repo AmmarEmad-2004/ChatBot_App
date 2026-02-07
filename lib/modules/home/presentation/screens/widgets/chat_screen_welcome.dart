@@ -1,6 +1,6 @@
-import 'package:chatbot_app/modules/home/widgets/explain_widget.dart';
-import 'package:chatbot_app/modules/home/widgets/translate_widget.dart';
-import 'package:chatbot_app/modules/home/widgets/write_and_edit_widget.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/explain_widget.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/translate_widget.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/write_and_edit_widget.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreenWelcome extends StatelessWidget {

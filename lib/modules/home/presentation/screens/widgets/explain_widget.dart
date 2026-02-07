@@ -1,6 +1,6 @@
 import 'package:chatbot_app/core/constants/app_images.dart';
 import 'package:chatbot_app/core/theme/text_styles.dart';
-import 'package:chatbot_app/modules/home/widgets/custom_container.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

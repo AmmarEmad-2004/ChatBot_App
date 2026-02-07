@@ -1,4 +1,4 @@
-import 'package:chatbot_app/modules/home/widgets/chat_bubble.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/chat_bubble.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreenBody extends StatelessWidget {

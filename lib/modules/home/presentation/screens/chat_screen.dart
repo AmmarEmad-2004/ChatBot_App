@@ -1,7 +1,7 @@
-import 'package:chatbot_app/modules/home/widgets/chat_screen_body.dart';
-import 'package:chatbot_app/modules/home/widgets/chat_screen_header.dart';
-import 'package:chatbot_app/modules/home/widgets/chat_screen_welcome.dart';
-import 'package:chatbot_app/modules/home/widgets/custom_text_feild.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/chat_screen_body.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/chat_screen_header.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/chat_screen_welcome.dart';
+import 'package:chatbot_app/modules/home/presentation/screens/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 
 class ChatScreen extends StatefulWidget {
