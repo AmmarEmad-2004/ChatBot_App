@@ -7,19 +7,13 @@ class MassageModel {
   Map<String, dynamic> toGemini() => {
     "role": role,
     "parts": [
-      {"text": text}
-    ]
+      {"text": text},
+    ],
   };
 
-  Map<String, dynamic> toJson() => {
-    "role": role,
-    "text": text,
-  };
+  Map<String, dynamic> toJson() => {"role": role, "text": text};
 
   factory MassageModel.fromJson(Map<String, dynamic> json) {
-    return MassageModel(
-      role: json['role'],
-      text: json['text'],
-    );
+    return MassageModel(role: json['role'] ?? '', text: json['text'] ?? '');
   }
 }

@@ -22,8 +22,8 @@ class ChatRepoImpl implements ChatRepo {
         ..clear()
         ..addAll(history);
       return Right(cache);
-    } catch (_) {
-      return Left(CacheFailure());
+    } catch (e) {
+      return Left(CacheFailure(errorMessage: e.toString()));
     }
   }
 
