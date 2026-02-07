@@ -12,5 +12,6 @@ class NetworkFailure extends Failure {
 }
 
 class CacheFailure extends Failure {
-  const CacheFailure() : super("مشكلة في البيانات");
+  const CacheFailure({String? errorMessage})
+    : super(errorMessage ?? "مشكلة في البيانات");
 }
