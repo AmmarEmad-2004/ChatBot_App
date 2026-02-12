@@ -38,11 +38,11 @@ class ChatRepoImpl implements ChatRepo {
 
       final aiMsg = MassageModel(role: "model", text: aiText);
       cache.add(aiMsg);
-      await local.saveMessage(aiMsg);
+      await local.saveMessage(aiMsg); // تتغير
 
       return Right(List.from(cache));
-    } on DioException {
-      return Left(NetworkFailure());
+    } on DioException catch (e) {
+      return Left(NetworkFailure(errorMessage: e.toString()));
     } catch (_) {
       return Left(ServerFailure());
     }
