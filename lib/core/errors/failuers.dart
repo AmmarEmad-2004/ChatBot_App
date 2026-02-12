@@ -8,7 +8,8 @@ class ServerFailure extends Failure {
 }
 
 class NetworkFailure extends Failure {
-  const NetworkFailure() : super("تحقق من الانترنت");
+  const NetworkFailure({String? errorMessage})
+    : super(errorMessage ?? "تحقق من الاتصال بالإنترنت");
 }
 
 class CacheFailure extends Failure {
