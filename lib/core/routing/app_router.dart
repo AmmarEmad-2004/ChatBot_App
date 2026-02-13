@@ -1,5 +1,5 @@
 import 'package:chatbot_app/core/routing/app_routers.dart';
-import 'package:chatbot_app/modules/home/presentation/screens/chat_screen.dart';
+import 'package:chatbot_app/modules/chat/presentation/screens/chat_screen.dart';
 import 'package:chatbot_app/modules/onboarding/screens/onboarding_screen.dart';
 import 'package:chatbot_app/modules/splash/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
