@@ -1,20 +1,26 @@
 import 'package:chatbot_app/modules/chat/data/models/chat_massage_model.dart';
 import 'package:chatbot_app/modules/chat/presentation/logic/chat_cubit.dart';
-import 'package:chatbot_app/modules/chat/presentation/logic/chat_state.dart';
 import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_header.dart';
-import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_massages.dart';
-import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_welcome.dart';
+import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_massages_consumer.dart';
+
 import 'package:chatbot_app/modules/chat/presentation/screens/widgets/custom_text_feild.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChatScreenBody extends StatelessWidget {
+class ChatScreenBody extends StatefulWidget {
   const ChatScreenBody({super.key});
 
   @override
+  State<ChatScreenBody> createState() => _ChatScreenBodyState();
+}
+
+class _ChatScreenBodyState extends State<ChatScreenBody> {
+  final TextEditingController controller = TextEditingController();
+  final List<ChatMassageModel> allMessages = [];
+  bool isTyping = false;
+  @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
     return Column(
       children: [
         ChatScreenHeader(),
@@ -25,24 +31,9 @@ class ChatScreenBody extends StatelessWidget {
           child: Stack(
             children: [
               Positioned.fill(
-                child: BlocBuilder<ChatCubit, ChatState>(
-                  builder: (context, state) {
-                    if (state is ChatSuccess) {
-                      if (state.messages.isEmpty) {
-                        return const ChatScreenWelcome();
-                      }
-                      return ChatScreenMassages(
-                        messages: state.messages,
-                        isTyping: state.isTyping,
-                      );
-                    }
-
-                    if (state is ChatFailuer) {
-                      
-                    }
-
-                    return const SizedBox();
-                  },
+                child: ChatScreenMassagesConsumer(
+                  messages: allMessages,
+                  isTyping: isTyping,
                 ),
               ),
               Positioned(
@@ -52,10 +43,15 @@ class ChatScreenBody extends StatelessWidget {
                 child: CustomTextFeild(
                   controller: controller,
                   onSend: () {
-                    context.read<ChatCubit>().sendMessage([
-                      ChatMassageModel(role: 'user', text: controller.text),
-                    ]);
-                    controller.clear();
+                    if (controller.text.isNotEmpty) {
+                      allMessages.add(
+                        ChatMassageModel(role: "user", text: controller.text),
+                      );
+                      context.read<ChatCubit>().sendMessage([
+                        ChatMassageModel(role: 'user', text: controller.text),
+                      ]);
+                      controller.clear();
+                    }
                   },
                 ),
               ),
@@ -66,6 +62,3 @@ class ChatScreenBody extends StatelessWidget {
     );
   }
 }
-
-
-
