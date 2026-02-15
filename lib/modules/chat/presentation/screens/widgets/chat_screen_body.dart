@@ -1,16 +1,15 @@
-
-
 import 'package:chatbot_app/modules/chat/data/models/chat_massage_model.dart';
 import 'package:chatbot_app/modules/chat/presentation/logic/chat_cubit.dart';
 import 'package:chatbot_app/modules/chat/presentation/logic/chat_state.dart';
-import 'package:chatbot_app/modules/home/presentation/screens/widgets/chat_screen_header.dart';
-import 'package:chatbot_app/modules/home/presentation/screens/widgets/chat_screen_massages.dart';
-import 'package:chatbot_app/modules/home/presentation/screens/widgets/chat_screen_welcome.dart';
-import 'package:chatbot_app/modules/home/presentation/screens/widgets/custom_text_feild.dart';
+import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_header.dart';
+import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_massages.dart';
+import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_welcome.dart';
+import 'package:chatbot_app/modules/chat/presentation/screens/widgets/custom_text_feild.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChatScreenBody extends StatelessWidget {  
+class ChatScreenBody extends StatelessWidget {
   const ChatScreenBody({super.key});
 
   @override
@@ -39,7 +38,7 @@ class ChatScreenBody extends StatelessWidget {
                     }
 
                     if (state is ChatFailuer) {
-                      return Center(child: Text(state.message));
+                      
                     }
 
                     return const SizedBox();
@@ -53,14 +52,8 @@ class ChatScreenBody extends StatelessWidget {
                 child: CustomTextFeild(
                   controller: controller,
                   onSend: () {
-                    final text = controller.text;
-                    if (text.trim().isEmpty) return;
-
                     context.read<ChatCubit>().sendMessage([
-                      ChatMassageModel(
-                        role: 'user',
-                          text: controller.text,
-                      ),
+                      ChatMassageModel(role: 'user', text: controller.text),
                     ]);
                     controller.clear();
                   },
@@ -73,3 +66,6 @@ class ChatScreenBody extends StatelessWidget {
     );
   }
 }
+
+
+
