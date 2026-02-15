@@ -5,27 +5,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatCubit extends Cubit<ChatState> {
   final ChatRepo repo;
-  final List<ChatMassageModel> _messages = []; 
 
   ChatCubit(this.repo) : super(ChatInitial());
 
   Future<void> sendMessage(List<ChatMassageModel> newMessages) async {
-    _messages.addAll(newMessages);
- 
-
-    emit(ChatSuccess(List.from(_messages), isTyping: true));
+    emit(ChatLoading());
 
     try {
-      final aiResponse = await repo.sendMessage(_messages);
+      final aiResponse = await repo.sendMessage(newMessages);
 
-    
-      _messages.add(aiResponse);
-
-      emit(ChatSuccess(List.from(_messages), isTyping: false));
+      emit(ChatSuccess(massage: aiResponse));
     } on Exception catch (e) {
       emit(ChatFailuer(e.toString()));
     }
   }
-
-
 }
