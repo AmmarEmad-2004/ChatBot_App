@@ -11,7 +11,6 @@ class ChatMassageModel {
     ],
   };
 
-  Map<String, dynamic> toJson() => {"role": role, "text": text};
 
   factory ChatMassageModel.fromJson(Map<String, dynamic> json) {
     return ChatMassageModel(role: json['role'] ?? '', text: json['text'] ?? '');
