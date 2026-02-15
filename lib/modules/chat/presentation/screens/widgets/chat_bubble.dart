@@ -1,7 +1,7 @@
 import 'package:chatbot_app/core/constants/app_images.dart';
 import 'package:chatbot_app/core/theme/app_colors.dart';
 import 'package:chatbot_app/core/theme/text_styles.dart';
-import 'package:chatbot_app/modules/home/data/models/chat_massage_model.dart';
+import 'package:chatbot_app/modules/chat/data/models/chat_massage_model.dart';
 import 'package:flutter/material.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -11,7 +11,7 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMe = message.role == "user"; // user or model
+    final isMe = message.role == "user"; 
     final text = message.text;
 
     return Align(
