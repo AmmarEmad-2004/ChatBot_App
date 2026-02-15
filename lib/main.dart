@@ -1,11 +1,12 @@
 import 'package:chatbot_app/chat_bot.dart';
-import 'package:chatbot_app/firebase_options.dart';
+import 'package:chatbot_app/core/helpers/bloc_observar.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  Bloc.observer = AppBlocObserver();
   runApp(DevicePreview(enabled: false, builder: (context) => ChatBot()));
 }
