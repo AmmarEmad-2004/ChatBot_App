@@ -7,10 +7,8 @@ class ChatInitial extends ChatState {}
 class ChatLoading extends ChatState {}
 
 class ChatSuccess extends ChatState {
-  final List<ChatMassageModel> messages;
-  final bool isTyping;
-
-  ChatSuccess(this.messages, {this.isTyping = false});
+final ChatMassageModel massage;
+  ChatSuccess({ required this.massage});
 }
 
 class ChatFailuer extends ChatState {
