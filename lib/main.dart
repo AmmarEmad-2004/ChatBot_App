@@ -8,5 +8,5 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Bloc.observer = AppBlocObserver();
-  runApp(DevicePreview(enabled: false, builder: (context) => ChatBot()));
+  runApp(DevicePreview(enabled: true, builder: (context) => ChatBot()));
 }
