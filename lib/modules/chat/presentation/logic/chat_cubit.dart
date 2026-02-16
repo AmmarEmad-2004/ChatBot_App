@@ -8,7 +8,9 @@ class ChatCubit extends Cubit<ChatState> {
 
   ChatCubit(this.repo) : super(ChatInitial());
 
-Future<void> sendMessage({required List<ChatMassageModel> newMessages}) async {
+  Future<void> sendMessage({
+    required List<ChatMassageModel> newMessages,
+  }) async {
     emit(ChatLoading());
 
     try {

@@ -7,8 +7,8 @@ class ChatInitial extends ChatState {}
 class ChatLoading extends ChatState {}
 
 class ChatSuccess extends ChatState {
-final ChatMassageModel massage;
-  ChatSuccess({ required this.massage});
+  final ChatMassageModel massage;
+  ChatSuccess({required this.massage});
 }
 
 class ChatFailuer extends ChatState {

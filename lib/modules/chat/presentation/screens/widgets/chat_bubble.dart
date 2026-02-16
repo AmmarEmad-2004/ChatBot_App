@@ -11,7 +11,7 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMe = message.role == "user"; 
+    final isMe = message.role == "user";
     final text = message.text;
 
     return Align(
