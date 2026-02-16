@@ -18,7 +18,7 @@ class ChatScreenBody extends StatefulWidget {
 class _ChatScreenBodyState extends State<ChatScreenBody> {
   final TextEditingController controller = TextEditingController();
   final List<ChatMassageModel> allMessages = [];
-  bool isTyping = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,7 +33,6 @@ class _ChatScreenBodyState extends State<ChatScreenBody> {
               Positioned.fill(
                 child: ChatScreenMassagesConsumer(
                   messages: allMessages,
-                  isTyping: isTyping,
                 ),
               ),
               Positioned(
