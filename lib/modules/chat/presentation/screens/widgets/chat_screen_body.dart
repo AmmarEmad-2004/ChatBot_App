@@ -31,9 +31,7 @@ class _ChatScreenBodyState extends State<ChatScreenBody> {
           child: Stack(
             children: [
               Positioned.fill(
-                child: ChatScreenMassagesConsumer(
-                  messages: allMessages,
-                ),
+                child: ChatScreenMassagesConsumer(messages: allMessages),
               ),
               Positioned(
                 left: 16,
@@ -46,9 +44,7 @@ class _ChatScreenBodyState extends State<ChatScreenBody> {
                       allMessages.add(
                         ChatMassageModel(role: "user", text: controller.text),
                       );
-                      context.read<ChatCubit>().sendMessage([
-                        ChatMassageModel(role: 'user', text: controller.text),
-                      ]);
+                      context.read<ChatCubit>().sendMessage(newMessages: allMessages);
                       controller.clear();
                     }
                   },
