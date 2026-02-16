@@ -14,7 +14,7 @@ class GeminiSevice {
   }) async {
     try {
       final response = await apiClient.post(
-        url: "/gemini-3-flash-preview:generateContent",
+        url: "/gemini-2.5-flash-lite:generateContent",
         data: {
           "contents": massages.map((massage) => massage.toGemini()).toList(),
         },
