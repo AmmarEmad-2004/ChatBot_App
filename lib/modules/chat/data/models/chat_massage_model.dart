@@ -5,12 +5,11 @@ class ChatMassageModel {
   ChatMassageModel({required this.role, required this.text});
 
   Map<String, dynamic> toGemini() => {
-    "role": role,
     "parts": [
       {"text": text},
     ],
+    "role": role,
   };
-
 
   factory ChatMassageModel.fromJson(Map<String, dynamic> json) {
     return ChatMassageModel(role: json['role'] ?? '', text: json['text'] ?? '');
