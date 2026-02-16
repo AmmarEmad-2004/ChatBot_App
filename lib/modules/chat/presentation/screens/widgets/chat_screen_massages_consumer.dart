@@ -9,11 +9,9 @@ class ChatScreenMassagesConsumer extends StatelessWidget {
   const ChatScreenMassagesConsumer({
     super.key,
     required this.messages,
-    required this.isTyping,
   });
 
   final List<ChatMassageModel> messages;
-  final bool isTyping;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class ChatScreenMassagesConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return ChatScreenMassages(messages: messages, isTyping: isTyping);
+        return ChatScreenMassages(messages: messages, isTyping: state is ChatLoading);
       },
     );
   }
