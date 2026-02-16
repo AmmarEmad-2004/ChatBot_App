@@ -2,14 +2,12 @@ import 'package:chatbot_app/modules/chat/data/models/chat_massage_model.dart';
 import 'package:chatbot_app/modules/chat/presentation/logic/chat_cubit.dart';
 import 'package:chatbot_app/modules/chat/presentation/logic/chat_state.dart';
 import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_massages.dart';
+import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatScreenMassagesConsumer extends StatelessWidget {
-  const ChatScreenMassagesConsumer({
-    super.key,
-    required this.messages,
-  });
+  const ChatScreenMassagesConsumer({super.key, required this.messages});
 
   final List<ChatMassageModel> messages;
 
@@ -21,8 +19,14 @@ class ChatScreenMassagesConsumer extends StatelessWidget {
           messages.add(state.massage);
         }
       },
+
       builder: (context, state) {
-        return ChatScreenMassages(messages: messages, isTyping: state is ChatLoading);
+        return messages.isEmpty
+            ? ChatScreenWelcome()
+            : ChatScreenMassages(
+                messages: messages,
+                isTyping: state is ChatLoading,
+              );
       },
     );
   }
