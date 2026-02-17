@@ -6,26 +6,57 @@ import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_scree
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChatScreenMassagesConsumer extends StatelessWidget {
+class ChatScreenMassagesConsumer extends StatefulWidget {
   const ChatScreenMassagesConsumer({super.key, required this.messages});
 
   final List<ChatMassageModel> messages;
+
+  @override
+  State<ChatScreenMassagesConsumer> createState() =>
+      _ChatScreenMassagesConsumerState();
+}
+
+class _ChatScreenMassagesConsumerState
+    extends State<ChatScreenMassagesConsumer> {
+  bool hasError = false;
+  String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ChatCubit, ChatState>(
       listener: (context, state) {
         if (state is ChatSuccess) {
-          messages.add(state.massage);
+          setState(() {
+            hasError = false;
+            errorMessage = null;
+          });
+          widget.messages.add(state.massage);
+        } else if (state is ChatFailuer) {
+          setState(() {
+            hasError = true;
+            errorMessage = state.message;
+          });
         }
       },
 
       builder: (context, state) {
-        return messages.isEmpty
+        return widget.messages.isEmpty
             ? ChatScreenWelcome()
             : ChatScreenMassages(
-                messages: messages,
+                messages: widget.messages,
                 isTyping: state is ChatLoading,
+                hasError: hasError,
+                onRetry: () {
+                  setState(() {
+                    hasError = false;
+                    errorMessage = null;
+                  });
+                  if (widget.messages.isNotEmpty) {
+                    context.read<ChatCubit>().sendMessage(
+                      newMessages: widget.messages,
+                    );
+                  }
+                },
               );
       },
     );
