@@ -53,4 +53,8 @@ class AppImages {
   /// Assets for assetsImagesVolumeHigh
   /// assets/images/volume-high.svg
   static const String volumeHigh = "assets/images/volume-high.svg";
+
+  /// Assets for assetsImagesFrame62
+  /// assets/images/Frame 62.png
+  static const String frame62 = "assets/images/Frame 62.png";
 }
