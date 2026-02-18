@@ -10,7 +10,8 @@ class ChatScreenMassages extends StatelessWidget {
   const ChatScreenMassages({
     required this.messages,
     super.key,
-    required this.isTyping, required this.isfailuer,
+    required this.isTyping,
+    required this.isfailuer,
   });
 
   final List<ChatMassageModel> messages;
@@ -26,18 +27,21 @@ class ChatScreenMassages extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         itemCount: messages.length + (isTyping ? 1 : 0),
         itemBuilder: (context, index) {
-          var newIndex = messages.length - (index + (isTyping || isfailuer ? 0 : 1));
+          var newIndex =
+              messages.length - (index + (isTyping || isfailuer ? 0 : 1));
           // or
           // var reverseList = messages.reversed.toList();
           if (isTyping && index == 0) {
             return const AiTyping();
-          } 
-          if(isfailuer && index == 0){
-            return ErrorMassage(onRetry: () {
-              context.read<ChatCubit>().sendMessage(newMessages: messages);
-              },);
           }
-          else {
+          if (isfailuer && index == 0) {
+            return ErrorMassage(
+              onRetry: () {
+                context.read<ChatCubit>().sendMessage(newMessages: messages);
+              },
+              lastMassage: messages.last.text,
+            );
+          } else {
             return ChatBubble(message: messages[newIndex]);
           }
         },
