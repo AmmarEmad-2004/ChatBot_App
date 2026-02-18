@@ -35,11 +35,14 @@ class ChatScreenMassages extends StatelessWidget {
             return const AiTyping();
           }
           if (isfailuer && index == 0) {
+            var lastMassage = messages.last;
+            messages.removeLast();
             return ErrorMassage(
               onRetry: () {
+                messages.add(lastMassage);
                 context.read<ChatCubit>().sendMessage(newMessages: messages);
               },
-              lastMassage: messages.last.text,
+              lastMassage: lastMassage.text,
             );
           } else {
             return ChatBubble(message: messages[newIndex]);
