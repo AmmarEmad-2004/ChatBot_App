@@ -23,6 +23,8 @@ class ChatScreenMassages extends StatelessWidget {
         itemCount: messages.length + (isTyping ? 1 : 0),
         itemBuilder: (context, index) {
           var newIndex = messages.length - (index + (isTyping ? 0 : 1));
+          // or
+          // var reverseList = messages.reversed.toList();
           if (isTyping && index == 0) {
             return const AiTyping();
           } else {
