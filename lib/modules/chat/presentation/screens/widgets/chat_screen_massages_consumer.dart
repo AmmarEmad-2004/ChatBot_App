@@ -26,6 +26,7 @@ class ChatScreenMassagesConsumer extends StatelessWidget {
             : ChatScreenMassages(
                 messages: messages,
                 isTyping: state is ChatLoading,
+                isfailuer: state is ChatFailuer,
               );
       },
     );
