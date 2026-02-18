@@ -1,8 +1,10 @@
 import 'package:chatbot_app/modules/chat/data/models/chat_massage_model.dart';
+import 'package:chatbot_app/modules/chat/presentation/logic/chat_cubit.dart';
 import 'package:chatbot_app/modules/chat/presentation/screens/widgets/ai_typing.dart';
 import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_bubble.dart';
 import 'package:chatbot_app/modules/chat/presentation/screens/widgets/error_massage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatScreenMassages extends StatelessWidget {
   const ChatScreenMassages({
@@ -31,7 +33,9 @@ class ChatScreenMassages extends StatelessWidget {
             return const AiTyping();
           } 
           if(isfailuer && index == 0){
-            return ErrorMassage(onRetry: () {  },);
+            return ErrorMassage(onRetry: () {
+              context.read<ChatCubit>().sendMessage(newMessages: messages);
+              },);
           }
           else {
             return ChatBubble(message: messages[newIndex]);
