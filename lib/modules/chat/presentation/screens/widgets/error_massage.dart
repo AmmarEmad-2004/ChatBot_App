@@ -20,7 +20,7 @@ class ErrorMassage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 8),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               lastMassage,
@@ -28,25 +28,30 @@ class ErrorMassage extends StatelessWidget {
                 context,
               ).copyWith(color: const Color(0xff656565)),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.refresh, color: Colors.white),
-                    Text(
-                      "Retry",
-                      style: TextStyles.textBold13(
-                        context,
-                      ).copyWith(color: Colors.white),
-                    ),
-                  ],
+            InkWell(
+              onTap: onRetry,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.refresh, color: Colors.white),
+                      Text(
+                        "Retry",
+                        style: TextStyles.textBold13(
+                          context,
+                        ).copyWith(color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
