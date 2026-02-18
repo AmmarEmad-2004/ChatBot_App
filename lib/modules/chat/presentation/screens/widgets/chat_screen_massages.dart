@@ -18,13 +18,15 @@ class ChatScreenMassages extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 70),
       child: ListView.builder(
+        reverse: true,
         padding: const EdgeInsets.all(8),
         itemCount: messages.length + (isTyping ? 1 : 0),
         itemBuilder: (context, index) {
-          if (isTyping && index == messages.length) {
+          var newIndex = messages.length - (index + (isTyping ? 0 : 1));
+          if (isTyping && index == 0) {
             return const AiTyping();
           } else {
-            return ChatBubble(message: messages[index]);
+            return ChatBubble(message: messages[newIndex]);
           }
         },
       ),
