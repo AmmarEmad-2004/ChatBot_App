@@ -24,9 +24,7 @@ class GeminiSevice {
 
       return ChatMassageModel(role: "model", text: aiText);
     } on DioException catch (e) {
-      print("STATUS: ${e.response?.statusCode}");
-      print("DATA: ${e.response?.data}");
-      rethrow;
+      throw Exception(e.response?.data["error"]["message"]);
     }
   }
 }
