@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 class GeminiSevice {
   final ApiClient apiClient = ApiClient(
     baseUrl: 'https://generativelanguage.googleapis.com/v1beta/models',
-    apiKey: apiKey,
+    // apiKey: apiKey,
   );
 
   Future<ChatMassageModel> sendChat({
@@ -15,6 +15,7 @@ class GeminiSevice {
     try {
       final response = await apiClient.post(
         url: "/gemini-2.5-flash-lite:generateContent",
+        apiKey: apiKey,
         data: {
           "contents": massages.map((massage) => massage.toGemini()).toList(),
         },
