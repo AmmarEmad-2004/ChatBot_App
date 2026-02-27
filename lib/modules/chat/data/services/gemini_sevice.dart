@@ -11,20 +11,30 @@ class GeminiSevice {
   Future<ChatMassageModel> sendChat({
     required List<ChatMassageModel> massages,
   }) async {
-    try {
-      final response = await apiClient.post(
-        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent",
-        apiKey: apiKey,
-        data: {
-          "contents": massages.map((massage) => massage.toGemini()).toList(),
-        },
-      );
-      final aiText =
-          response.data["candidates"][0]["content"]["parts"][0]["text"];
+    const maxRetries = 3;
 
-      return ChatMassageModel(role: "model", text: aiText);
-    } on DioException catch (e) {
-      throw Exception(e.response?.data["error"]["message"]);
+    for (int i = 1; i <= maxRetries; i++) {
+      try {
+        final response = await apiClient.post(
+          url:
+              "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent",
+          apiKey: apiKey,
+          data: {
+            "contents": massages.map((massage) => massage.toGemini()).toList(),
+          },
+        );
+        final aiText =
+            response.data["candidates"][0]["content"]["parts"][0]["text"];
+
+        return ChatMassageModel(role: "model", text: aiText);
+      } on DioException catch (e) {
+        if (i == maxRetries) {
+          throw Exception(e.response?.data["error"]["message"]);
+        }
+        await Future.delayed(Duration(seconds: 1 << (i - 1)));
+      }
     }
+
+    throw Exception('Failed after $maxRetries attempts');
   }
 }
