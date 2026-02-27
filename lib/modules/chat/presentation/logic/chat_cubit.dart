@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ChatCubit extends Cubit<ChatState> {
   final ChatRepo repo;
 
-  ChatCubit(this.repo) : super(ChatInitial());
+  ChatCubit({required this.repo}) : super(ChatInitial());
 
   Future<void> sendMessage({
     required List<ChatMassageModel> newMessages,
