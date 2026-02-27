@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 
 class ApiClient {
   final Dio dio;
-  final String baseUrl;
+  // final String baseUrl;
 
-  ApiClient({required this.baseUrl})
+  ApiClient()
     : dio = Dio(
         BaseOptions(
-          baseUrl: baseUrl,
+          // baseUrl: baseUrl,
           headers: {'Content-Type': 'application/json'},
           // queryParameters: {'key': apiKey},
         ),
