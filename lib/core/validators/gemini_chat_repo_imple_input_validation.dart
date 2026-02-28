@@ -21,6 +21,10 @@ void geminiChatRepoImpleInputValidation(List<ChatMassageModel> messages) {
       throw ArgumentError('Invalid role');
     }
 
+    if (message.text.length > 50) {
+      throw ArgumentError('Message text is too long');
+    }
+
     // if (massage.role.trim().isEmpty ||
     //     !allowedRoles.contains(massage.role.trim())) {
     //   throw ArgumentError('Invalid role or missing role ${massage.role}');
