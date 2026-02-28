@@ -14,7 +14,8 @@ void main() {
   });
 
   group('Send massage input validation', () {
-    test('should throw exception when the massages list is empty', () { // ازاى test كل حاجه 
+    test('should throw exception when the massages list is empty', () {
+      // ازاى test كل حاجه
       expect(
         () => geminiChatRepoImple.sendMessage([]),
         throwsA(isA<ArgumentError>()),
@@ -47,17 +48,24 @@ void main() {
         throwsA(isA<ArgumentError>()),
       );
     });
+
+    test('should thorw exception if lenght is over than 50', () {
+      expect(
+        () => geminiChatRepoImple.sendMessage([
+          ChatMassageModel(role: 'user', text: 'text' * 51),
+        ]),
+        throwsA(isA<ArgumentError>()),
+      );
+    });
   });
   group('Send massage output validation', () {
     test('should throw exception when response text is empty', () {
       when(
-        () => geminiMockService.sendChat(
-          massages: any(named: 'massages'),
-        ), 
+        () => geminiMockService.sendChat(massages: any(named: 'massages')),
       ).thenAnswer((_) async => ChatMassageModel(role: 'model', text: ''));
       expect(
         () => geminiChatRepoImple.sendMessage([
-          ChatMassageModel(role: 'user', text: 'Hello'), 
+          ChatMassageModel(role: 'user', text: 'Hello'),
         ]),
         throwsA(isA<ArgumentError>()),
       );
@@ -72,7 +80,7 @@ void main() {
       );
       expect(
         () => geminiChatRepoImple.sendMessage([
-          ChatMassageModel(role: 'user', text: 'Hello'), 
+          ChatMassageModel(role: 'user', text: 'Hello'),
         ]),
         throwsA(isA<ArgumentError>()),
       );
