@@ -9,7 +9,6 @@ class ApiClient {
         BaseOptions(
           // baseUrl: baseUrl,
           headers: {'Content-Type': 'application/json'},
-          // queryParameters: {'key': apiKey},
         ),
       );
 
