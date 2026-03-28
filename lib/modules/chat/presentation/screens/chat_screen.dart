@@ -1,6 +1,4 @@
-import 'package:chatbot_app/core/networking/api_client.dart';
-import 'package:chatbot_app/modules/chat/data/repos/gemini_chat_repo_imple.dart';
-import 'package:chatbot_app/modules/chat/data/services/gemini_sevice.dart';
+import 'package:chatbot_app/core/utils/setup_get_it.dart';
 import 'package:chatbot_app/modules/chat/presentation/logic/chat_cubit.dart';
 import 'package:chatbot_app/modules/chat/presentation/screens/widgets/chat_screen_body.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +12,7 @@ class ChatScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocProvider(
-        create: (_) => ChatCubit(
-          repo: GeminiChatRepoImple(
-            geminiSevice: GeminiSevice(apiClient: ApiClient()),
-          ),
-        ),
+        create: (_) => getIt<ChatCubit>(),
         child: ChatScreenBody(),
       ),
     );
